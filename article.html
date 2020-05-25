@@ -1,6 +1,7 @@
 <!Doctype html>
 <html lang="en-US">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         Articles
     </title>
@@ -27,8 +28,64 @@
    example {
   overflow-wrap: break-word;
 }
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
 
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
 
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+ 
 
   </style>
 
@@ -49,7 +106,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav ml-auto pr-5">
             <li class="nav-item active">
               
             <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
@@ -61,21 +118,27 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Pricing</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown link
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="article.html">Covid-19</a>
-                <a class="dropdown-item" href="#">Another article</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-          </ul>
+           
         </div>
       </nav>
     </div>
 </div>
+
+
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">☰ Other articles</button>  
+
+
+
 
 <div id="google_translate_element"></div>
 
@@ -143,9 +206,9 @@ function googleTranslateElementInit() {
 
 
   <div class=" footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-xs-12 about-company">
+    <div class="container px-0 mb-0">
+      <div class="row pt-5">
+        <div class="col-lg-5 col-xs-12 about-company ">
           <h2>Heading</h2>
           <p class="pr-5 text-white-50">This website is created by Zahir Shaikh, be shoar to bookmark this site to get the latest updates related current events, infotainment, technology and much more If you are interested to be part this website and wanted to upload your articles, images, videos or any other multimedia content then you can just contact from given social medea platforms or email.</p>
           <p><a href="#"><i class="fa fa-facebook-square mr-1"></i></a><a href="#"><i class="fa fa-linkedin-square"></i></a></p>
@@ -176,7 +239,17 @@ function googleTranslateElementInit() {
     </div>
   
   
-
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+      
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+      }
+      </script>
 
 
 </body>
